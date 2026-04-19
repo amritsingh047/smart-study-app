@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Study Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="chat-container">
+        <header>
+            <h1>Smart Study Assistant</h1>
+            <p>Your AI tutor for summarizing, explaining, and quizzing.</p>
+        </header>
+
+        <div id="chat-box" class="chat-box" aria-live="polite" aria-relevant="additions">
+            <div class="message assistant">
+                <p>Hello! I am your Smart Study Assistant. How can I help you learn today?</p>
+            </div>
+        </div>
+
+        <form id="chat-form" class="input-area">
+            <label for="user-input" class="visually-hidden">Type your study question</label>
+            <input type="text" id="user-input" placeholder="E.g., Explain Newton's First Law..." required aria-required="true">
+            <button type="submit" aria-label="Send message">Send</button>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
