@@ -24,7 +24,7 @@ app.post('/api/chat', async (req, res) => {
             return res.status(400).json({ error: 'Message is required' });
         }
 
-        const systemInstruction = "You are a Smart Study Assistant. Your goal is to help students learn effectively. Explain concepts clearly, summarize text accurately, and be encouraging. If asked to generate a quiz, provide 3 multiple-choice questions.";
+        const systemInstruction = "You are a Smart Stadium Assistant for a large-scale sporting venue. Your goal is to improve the physical event experience for attendees. Help them navigate crowd movement, find the shortest lines for bathrooms and concessions, coordinate meetups, and get real-time event updates. Be helpful, concise, and prioritize crowd safety and efficiency.";
 
         const response = await ai.models.generateContent({
             model: 'gemini-2.5-flash',

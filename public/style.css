@@ -1,10 +1,10 @@
 :root {
-    --primary-color: #2563eb;
-    --bg-color: #f3f4f6;
-    --chat-bg: #ffffff;
-    --text-color: #1f2937;
-    --bot-msg-bg: #e5e7eb;
-    --user-msg-bg: #dbeafe;
+    --primary-color: #f59e0b;
+    --bg-color: #111827;
+    --chat-bg: #1f2937;
+    --text-color: #f9fafb;
+    --bot-msg-bg: #374151;
+    --user-msg-bg: #92400e;
 }
 
 * {
@@ -83,8 +83,8 @@ header p {
 .input-area {
     display: flex;
     padding: 15px;
-    border-top: 1px solid #e5e7eb;
-    background-color: #f9fafb;
+    border-top: 1px solid #374151;
+    background-color: #1f2937;
 }
 
 .visually-hidden {
@@ -101,10 +101,12 @@ header p {
 input[type="text"] {
     flex: 1;
     padding: 12px;
-    border: 1px solid #d1d5db;
+    border: 1px solid #4b5563;
     border-radius: 6px;
     font-size: 1rem;
     outline: none;
+    background-color: #374151;
+    color: #f9fafb;
     transition: border-color 0.2s;
 }
 
@@ -125,7 +127,7 @@ button {
 }
 
 button:hover {
-    background-color: #1d4ed8;
+    background-color: #d97706;
 }
 
 button:disabled {
