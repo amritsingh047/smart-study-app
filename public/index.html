@@ -4,27 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Stadium Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main class="chat-container">
+    <div class="background-blur"></div>
+    <main class="chat-container glassmorphism">
         <header>
             <h1>Smart Stadium Assistant</h1>
-            <p>Your guide to navigating crowds, finding amenities, and enjoying the event.</p>
+            <p>Navigate crowds, find amenities, and enjoy the event.</p>
         </header>
+
+        <div class="quick-actions">
+            <button class="action-btn" id="btn-map">🏟️ View Map</button>
+            <button class="action-btn" id="btn-menu">🍔 Order Food</button>
+            <button class="action-btn" id="btn-restroom">🚻 Nearest Restroom</button>
+            <button class="action-btn" id="btn-merch">👕 Buy Merch</button>
+        </div>
 
         <div id="chat-box" class="chat-box" aria-live="polite" aria-relevant="additions">
             <div class="message assistant">
-                <p>Welcome to the stadium! I am your Smart Stadium Assistant. How can I help you navigate the venue today?</p>
+                <p>Welcome to the stadium! I am your Smart Stadium Assistant. How can I help you today?</p>
             </div>
         </div>
 
         <form id="chat-form" class="input-area">
             <label for="user-input" class="visually-hidden">Type your venue question</label>
-            <input type="text" id="user-input" placeholder="E.g., Which gate has the shortest line?" required aria-required="true">
-            <button type="submit" aria-label="Send message">Send</button>
+            <input type="text" id="user-input" placeholder="Ask me anything..." required aria-required="true">
+            <button type="submit" aria-label="Send message">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.01 21L23 12L2.01 3L2 10l15 2-15 2z" fill="currentColor"/>
+                </svg>
+            </button>
         </form>
     </main>
+
+    <!-- Map Modal -->
+    <div id="map-modal" class="modal">
+        <div class="modal-content glassmorphism">
+            <span class="close" id="close-map">&times;</span>
+            <h2>Stadium Map</h2>
+            <img src="map.png" alt="Stadium Map" class="modal-image">
+        </div>
+    </div>
+
+    <!-- Food Menu Modal -->
+    <div id="menu-modal" class="modal">
+        <div class="modal-content glassmorphism">
+            <span class="close" id="close-menu">&times;</span>
+            <h2>Food & Beverages</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <span>🌭 Premium Hot Dog</span>
+                    <button class="order-btn" data-item="Premium Hot Dog">Order</button>
+                </div>
+                <div class="menu-item">
+                    <span>🍔 Stadium Burger</span>
+                    <button class="order-btn" data-item="Stadium Burger">Order</button>
+                </div>
+                <div class="menu-item">
+                    <span>🍕 Pepperoni Slice</span>
+                    <button class="order-btn" data-item="Pepperoni Pizza Slice">Order</button>
+                </div>
+                <div class="menu-item">
+                    <span>🍺 Craft Beer</span>
+                    <button class="order-btn" data-item="Craft Beer">Order</button>
+                </div>
+                <div class="menu-item">
+                    <span>🥤 Large Soda</span>
+                    <button class="order-btn" data-item="Large Soda">Order</button>
+                </div>
+                <div class="menu-item">
+                    <span>🥨 Soft Pretzel</span>
+                    <button class="order-btn" data-item="Soft Pretzel">Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
