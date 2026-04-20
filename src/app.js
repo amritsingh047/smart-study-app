@@ -33,7 +33,7 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static frontend files
-app.use(express.static(path.join(__dirname, '../../public'))); // adjust path based on src location
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Apply rate limiter specifically to API routes
 app.use('/api/', apiLimiter);
