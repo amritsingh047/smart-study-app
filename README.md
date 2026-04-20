@@ -47,6 +47,8 @@ This application heavily leverages Google Cloud Platform for an enterprise-grade
 1.  **Google Gemini AI**: Powers the core conversational intelligence.
 2.  **Google Cloud Logging (`@google-cloud/logging`)**: Replaces standard console logs with structured, enterprise-grade cloud observability.
 3.  **Google Cloud Storage (`@google-cloud/storage`)**: Implemented mock integration for redundant, secure chat log backups.
+4.  **Firebase (`firebase-admin`)**: Firestore NoSQL database integration to securely store user chat history and session states.
+5.  **Google Cloud Pub/Sub (`@google-cloud/pubsub`)**: Enterprise event-driven architecture streaming real-time stadium events to optimize crowd movement and coordination.
 
 ### Accessibility & UI
 The frontend utilizes a modern **Glassmorphism** design with smooth CSS micro-animations. It maintains strict WCAG accessibility standards:

@@ -43,6 +43,10 @@ async function handleChatRequest(req, res) {
         // 4. Google Services: Backup to GCS (Mock)
         gcpService.backupChatLogToGCS(req.ip, { message, reply });
 
+        // 5. Google Services: Save to Firestore and Publish Pub/Sub Event
+        gcpService.saveToFirestore(req.ip, { message, reply });
+        gcpService.publishStadiumEvent('stadium-interaction-events', { type: 'chat', query: normalizedMessage });
+
         res.json({ reply, cached: false });
     } catch (error) {
         gcpService.writeLog('ERROR', 'Chat processing failed', { error: error.message });

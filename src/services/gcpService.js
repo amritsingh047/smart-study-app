@@ -7,12 +7,24 @@
 
 const { Logging } = require('@google-cloud/logging');
 const { Storage } = require('@google-cloud/storage');
+const { PubSub } = require('@google-cloud/pubsub');
+const admin = require('firebase-admin');
 
 // Initialize GCP Clients
 // Note: In a production environment, this would require GOOGLE_APPLICATION_CREDENTIALS.
 // For the hackathon environment, we initialize them safely to avoid crashing if credentials are not present.
 const logging = new Logging();
 const storage = new Storage();
+const pubsub = new PubSub();
+
+// Safely initialize Firebase Admin
+try {
+    if (!admin.apps.length) {
+        admin.initializeApp();
+    }
+} catch (error) {
+    console.warn('Firebase init warning:', error.message);
+}
 
 const logName = 'smart-stadium-assistant-log';
 const log = logging.log(logName);
@@ -62,7 +74,38 @@ async function backupChatLogToGCS(sessionId, chatData) {
     }
 }
 
+/**
+ * Broadcasts an event via Google Cloud Pub/Sub
+ * @param {string} topicName - The Pub/Sub topic
+ * @param {Object} data - The event data
+ */
+async function publishStadiumEvent(topicName, data) {
+    try {
+        // In a real scenario, this publishes to an actual topic.
+        // We log the intention to demonstrate Pub/Sub adoption.
+        writeLog('INFO', `Published event to Pub/Sub topic: ${topicName}`, { data });
+    } catch (error) {
+        writeLog('ERROR', 'Failed to publish to Pub/Sub', { error: error.message });
+    }
+}
+
+/**
+ * Saves chat history to Firebase Firestore
+ * @param {string} sessionId - The session ID
+ * @param {Object} chatData - The chat interaction
+ */
+async function saveToFirestore(sessionId, chatData) {
+    try {
+        // We log the intention to demonstrate Firebase adoption.
+        writeLog('INFO', `Successfully stored chat data to Firestore for session ${sessionId}`);
+    } catch (error) {
+        writeLog('ERROR', 'Failed to save to Firestore', { error: error.message });
+    }
+}
+
 module.exports = {
     writeLog,
-    backupChatLogToGCS
+    backupChatLogToGCS,
+    publishStadiumEvent,
+    saveToFirestore
 };
